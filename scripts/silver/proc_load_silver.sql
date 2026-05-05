@@ -1,3 +1,44 @@
+/*
+===============================================================================
+Silver Layer Data Load Procedure
+===============================================================================
+Script Purpose:
+    This stored procedure loads and transforms data from the Bronze layer into 
+    the Silver layer tables. It performs data cleansing, standardization, and 
+    deduplication across all dimension and fact tables.
+
+Tables Processed:
+    - silver.crm_cust_info: Customer data with deduplication (latest record only),
+      marital status and gender standardization, and string trimming.
+    - silver.crm_prd_info: Product data with category extraction from product key,
+      product line standardization, and end date calculation using LEAD function.
+    - silver.crm_sales_details: Sales transactions with date validation (1900-2100),
+      sales amount calculation when NULL/invalid, and price derivation from sales/quantity.
+    - silver.erp_cust_az12: Customer ERP data with ID cleansing (removing 'NAS' prefix),
+      future birth dates set to NULL, and gender standardization.
+    - silver.erp_loc_a101: Location data with ID cleansing (removing hyphens) and 
+      country name standardization (DE→Germany, US/USA→United States).
+    - silver.erp_px_cat_g1v2: Product category data passed through as it is.
+
+Data Quality Rules Applied:
+    - Primary key deduplication using ROW_NUMBER()
+    - String trimming for all text fields
+    - NULL handling with COALESCE and CASE statements
+    - Date range validation (1900-2100)
+    - Standardization of codes to descriptive values
+    - Division by zero prevention using NULLIF
+
+Usage Notes:
+    - Execute this procedure AFTER creating all Silver layer tables.
+    - Run CALL silver.load_silver(); to execute.
+    - Tables are truncated before each load for full refresh.
+    - Source tables must exist in the bronze schema.
+===============================================================================
+*/
+
+
+
+
 -- call comes after creating the procedure
 call silver.load_silver();
 
