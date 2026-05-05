@@ -1,4 +1,37 @@
 
+/*
+===============================================================================
+Silver Layer Table Creation Script
+===============================================================================
+Script Purpose:
+    This script creates the Silver layer tables in the 'silver' schema, which serve 
+    as the cleaned and transformed layer for data warehousing. It includes the 
+    following tables:
+    - silver.crm_cust_info: Customer master data with standardized fields.
+    - silver.crm_prd_info: Product information with category and line details.
+    - silver.crm_sales_details: Sales transaction data with order and pricing details.
+    - silver.erp_loc_a101: Location/country information from ERP system.
+    - silver.erp_cust_az12: Customer demographic data including birth date and gender.
+    - silver.erp_px_cat_g1v2: Product category hierarchy with maintenance flags.
+
+Table Features:
+    - Each table includes a dwh_create_date column with DEFAULT CURRENT_TIMESTAMP 
+      for audit trail and data lineage tracking.
+    - Tables are dropped if they already exist to ensure clean recreation.
+    - Data types are optimized for the expected data (VARCHAR for strings, INT for 
+      numeric values, DATE for date fields).
+
+Usage Notes:
+    - Execute this script before loading data into the Silver Layer.
+    - Ensure the 'silver' schema exists before running this script.
+    - All tables are designed to match the structure of the bronze layer sources 
+      after data cleansing and standardization.
+===============================================================================
+*/
+
+
+
+
 drop table if exists silver.crm_cust_info;
 create table silver.crm_cust_info(
 	cst_id INT,
