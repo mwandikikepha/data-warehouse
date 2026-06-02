@@ -3,6 +3,9 @@ Building a modern data warehouse with SQL, including ELT processes, data modelli
 
 This project demonstrates a comprehensive data warehousing and analytics solution, from building a adata warehouse to generating actionable insights.
 
+
+<img width="680" height="371" alt="image" src="https://github.com/user-attachments/assets/f7134ba4-0edc-410a-b92d-202f2939580d" />
+
 **Project Requirements**
 
 **Building the Data Warehouse (Data Engineering)**
